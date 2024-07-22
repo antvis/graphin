@@ -20,7 +20,6 @@ export default function useGraph<P extends GraphinProps>(props: P) {
     graphRef.current = graph;
 
     setIsReady(true);
-    onInit?.(graph);
 
     return () => {
       const graph = graphRef.current;
@@ -31,6 +30,10 @@ export default function useGraph<P extends GraphinProps>(props: P) {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (isReady) onInit?.(graphRef.current!);
+  }, [isReady, onInit]);
 
   useEffect(() => {
     const container = containerRef.current;
