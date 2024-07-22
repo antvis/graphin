@@ -10,6 +10,7 @@
     "url": "https://github.com/antvis/Graphin.git"
   },
   "files": [
+    "src",
     "es",
     "lib"
   ],
@@ -23,7 +24,8 @@
     "lib:es": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir es",
     "lib": "run-p lib:*",
     "lint": "eslint ./src --quiet && prettier ./src --check",
-    "prepublishOnly": "npm run ci",
+    "prepublishOnly": "run-s readme ci",
+    "readme": "node ./scripts/copy-readme.mjs",
     "type-check": "tsc --noEmit",
     "watch": "pnpm lib:es --w"
   },
