@@ -31,18 +31,16 @@
   "dependencies": {
     "@ant-design/icons": "^4.8.1",
     "@antv/g6": "^5.0.0",
-    "@antv/graphin": "workspace:*",
+    "@antv/graphin": "^3.0.0",
     "antd": "^5.13.2",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "@antv/graphin": "^3.0.0",
     "less": "^4.2.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
   "peerDependencies": {
-    "@antv/graphin": "^3.0.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
