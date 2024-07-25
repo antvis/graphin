@@ -30,7 +30,7 @@
     "watch": "pnpm lib:es --w"
   },
   "dependencies": {
-    "@antv/g6": "^5.0.0-beta.39"
+    "@antv/g6": "^5.0.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.8.1",

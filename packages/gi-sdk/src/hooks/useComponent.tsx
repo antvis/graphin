@@ -1,29 +1,23 @@
 import React from 'react';
-import { get } from 'lodash-es';
-import { useModel } from './useModel';
-import { BASIC_WIDGETS } from '../constants';
-import { widgets as widgetsMap } from '../assets';
+import type { Slot, WidgetItem } from '../types';
+import { getWidget } from '../assets';
+import { BuiltInWidgets } from '../assets/widgets';
 
-import { WidgetItem } from '../types';
+export const useComponent = (widgets: WidgetItem[]) => {
+  const allWidgets = [...BuiltInWidgets, ...widgets];
 
-export const useComponent = () => {
-  const [model] = useModel();
-  const widgets = get(model, 'application.spec.widgets', []);
-  const allWidgets = [...BASIC_WIDGETS, ...widgets];
-  const renderComponent = (solt: string) => {
-    const soltWidgets = allWidgets.filter(item => item.solt === solt);
-    return soltWidgets.map((item: WidgetItem, index) => {
-      const { name, ...rest } = item;
-      const Component = widgetsMap.get(name);
-      if (!Component) {
-        return null;
-      }
+  const renderComponents = (slot: Slot) => {
+    const slotWidgets = allWidgets.filter(item => item.slot === slot);
 
-      return <Component key={`${name}-${index}`} {...rest} graph={model.get('graph')} />;
+    return slotWidgets.map((item, index) => {
+      const { name, properties } = item;
+      const Component = getWidget(name);
+
+      if (!Component) return null;
+
+      return <Component key={`${name}-${index}`} {...properties} />;
     });
   };
 
-  return {
-    renderComponent,
-  };
+  return { renderComponents };
 };

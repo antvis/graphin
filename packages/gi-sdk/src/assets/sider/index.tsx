@@ -1,32 +1,29 @@
-/** @jsxImportSource @emotion/react */
-import React from 'react';
-import { set } from 'lodash-es';
+import React, { PropsWithChildren } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
-import { useSnapshot } from 'valtio';
-import { SDKModel } from '../../model';
-import { SIDER_STYLE } from './style';
 import { PREFIX } from '../../constants';
+import { useGlobalModel } from '../../context';
+import './index.less';
 
-export const Sider: React.FC<{ children: React.ReactNode }> = props => {
+export const Sider: React.FC<PropsWithChildren> = props => {
   const { children } = props;
-  const model = useSnapshot(SDKModel);
-  const { open = true } = model.sider || {};
+  const [globalModel, updateGlobalModel] = useGlobalModel();
+  const isSiderOpen = Boolean(globalModel.sider);
 
   return (
     <React.Fragment>
-      <div className={`${PREFIX}-sider`} css={SIDER_STYLE}>
+      <div className={`${PREFIX}-sider`}>
         <div className={`${PREFIX}-tool`}>
           <div
             className={`${PREFIX}-sider-icon`}
             onClick={() => {
-              set(SDKModel, 'sider.open', !open);
+              updateGlobalModel({ sider: !globalModel.sider });
             }}
           >
-            {open ? <DoubleLeftOutlined /> : <DoubleRightOutlined />}
+            {isSiderOpen ? <DoubleLeftOutlined /> : <DoubleRightOutlined />}
           </div>
         </div>
-        <CSSTransition in={open} classNames="fade" timeout={400} apper="true">
+        <CSSTransition in={isSiderOpen} classNames="fade" timeout={400}>
           <div className={`${PREFIX}-sider-content`}>{children}</div>
         </CSSTransition>
       </div>

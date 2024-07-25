@@ -10,9 +10,8 @@ module.exports = {
   },
   rules: {
     'no-console': 'error',
-    noImplicitAny: 0, // 允许 any
-    'no-unused-vars': ['warn', { varsIgnorePattern: '^_' }],
-    '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_' }],
+    '@typescript-eslint/no-explicit-any': 1,
+    '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     'jsdoc/check-param-names': 1,
     'jsdoc/require-description': 1,
     'jsdoc/require-jsdoc': 1,

@@ -1,14 +1,9 @@
-/** @jsxImportSource @emotion/react */
-import React from 'react';
-import { SIDER_STYLE } from './style';
+import React, { PropsWithChildren } from 'react';
 import { PREFIX } from '../../constants';
+import './index.less';
 
-export const Header: React.FC<{ children: React.ReactNode }> = props => {
+export const Header: React.FC<PropsWithChildren> = props => {
   const { children } = props;
 
-  return (
-    <div className={`${PREFIX}-header`} css={SIDER_STYLE}>
-      {children}
-    </div>
-  );
+  return <div className={`${PREFIX}-header`}>{children}</div>;
 };
