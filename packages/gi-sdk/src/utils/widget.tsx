@@ -1,7 +1,6 @@
-import React, { useCallback, useMemo } from 'react';
-import { useRegistryManger, useWidgetProps } from '../hooks';
+import React, { useMemo } from 'react';
+import { ImplWidget } from '../components';
 import type { WidgetSchema } from '../spec';
-import type { SlotElements } from '../types';
 import { parseSlot } from './slot';
 
 /**
@@ -36,43 +35,12 @@ export function getTopLevelWidgets(widgets: WidgetSchema[]): WidgetSchema[] {
  */
 export const useImplementWidgets = (widgets: WidgetSchema[]): React.ReactNode => {
   const topLevelWidgets = useMemo(() => getTopLevelWidgets(widgets), [widgets]);
-  const registryManager = useRegistryManger();
 
-  const renderWidget = useCallback(
-    (widget: WidgetSchema) => {
-      const { id: widgetId, type, slots } = widget;
-      const widgetOption = registryManager.getWidget(type);
-      const [properties] = useWidgetProps(widgetId);
-      const mergedProperties = Object.assign({}, widgetOption.defaultProperties, properties);
-      const ImplWidget = widgetOption.component;
-
-      let slotElements: SlotElements = {};
-
-      if (slots) {
-        const parsedSlots = parseSlot(slots);
-        slotElements = Object.entries(parsedSlots).reduce((acc, [slotName, slotIds]) => {
-          const slotWidgets = slotIds.map((id) => widgets.find((w) => w.id === id)).filter(Boolean) as WidgetSchema[];
-
-          if (!slotWidgets.length) return acc;
-
-          acc[slotName] = slotWidgets.map(renderWidget);
-          return acc;
-        }, {});
-      }
-
-      return (
-        <React.Fragment key={widgetId}>
-          <ImplWidget
-            data-widget-id={widgetId}
-            data-widget-name={widgetOption.metadata.name}
-            slotElements={slotElements}
-            {...mergedProperties}
-          />
-        </React.Fragment>
-      );
-    },
-    [registryManager, widgets],
+  return (
+    <React.Fragment>
+      {topLevelWidgets.map((widget) => (
+        <ImplWidget key={widget.id} widget={widget} />
+      ))}
+    </React.Fragment>
   );
-
-  return <React.Fragment>{topLevelWidgets.map(renderWidget)}</React.Fragment>;
 };
