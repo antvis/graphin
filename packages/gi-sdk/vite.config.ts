@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { join } from 'path';
 
 export default defineConfig({
-  root: './public',
+  root: './docs',
   server: {
     port: 8001,
     open: '/',

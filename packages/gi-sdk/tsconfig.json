@@ -7,5 +7,5 @@
     }
   },
   "extends": "../../tsconfig.json",
-  "include": ["src", "public"]
+  "include": ["src", "docs"]
 }

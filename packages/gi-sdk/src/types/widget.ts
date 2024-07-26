@@ -1,20 +1,37 @@
-import type { Slot } from './slot';
+import type { WidgetMetadata } from '../spec';
+import type { ID } from './id';
+import type { SlotElements } from './slot';
 
-export type WidgetItem = {
+export interface ImplementWidget<Properties extends ImplementWidgetProps = ImplementWidgetProps> {
   /**
-   * The widget name.
+   * 组件版本号
    */
-  name: string;
+  version: string;
   /**
-   * Indicates the slot where the widget is placed.
+   * 组件元数据信息
    */
-  slot: Slot;
+  metadata: WidgetMetadata;
   /**
-   * The order of the widget.
+   * 组件实现类
    */
-  order?: number;
+  component: React.FC<Properties>;
   /**
-   * The properties of the widget.
+   * 组件默认属性值
    */
-  properties?: Record<string, unknown>;
-};
+  defaultProperties?: Partial<Properties>;
+}
+
+export interface ImplementWidgetProps<K extends string = string> {
+  /**
+   * 渲染组件 ID
+   */
+  'data-widget-id': ID;
+  /**
+   * 渲染组件名称
+   */
+  'data-widget-name': string;
+  /**
+   * 插槽子组件
+   */
+  slotElements: SlotElements<K>;
+}

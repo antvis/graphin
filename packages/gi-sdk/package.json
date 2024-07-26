@@ -1,14 +1,15 @@
 {
   "name": "@antv/gi-sdk",
   "version": "3.0.0-alpha.0",
-  "description": "the react toolkit for graph analysis based on g6",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "description": "SDK for Graph Insight Application",
   "repository": {
     "type": "git",
     "url": "https://github.com/antvis/Graphin.git"
   },
+  "license": "ISC",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "src",
     "es",
@@ -19,20 +20,20 @@
     "ci": "run-s type-check lint build",
     "clean": "rimraf lib es",
     "dev": "vite",
+    "lib": "run-p lib:*",
     "lib:cjs": "tsc -p tsconfig.build.json --target ES5 --module commonjs --outDir lib",
     "lib:es": "tsc -p tsconfig.build.json --target ES5 --module ESNext --outDir es",
-    "lib": "run-p lib:*",
     "lint": "eslint ./src --quiet && prettier ./src --check",
     "prepublishOnly": "npm run ci",
     "type-check": "tsc --noEmit",
     "watch": "pnpm lib:es --w"
   },
-  "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.8.1",
     "@antv/g6": "^5.0.0",
     "@antv/graphin": "^3.0.0",
     "antd": "^5.13.2",
+    "classnames": "^2.5.1",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -45,8 +46,8 @@
     "react-dom": ">=16.9.0"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
     "access": "public",
+    "registry": "https://registry.npmjs.org/",
     "tag": "alpha"
   }
 }

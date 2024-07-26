@@ -1,3 +1,8 @@
-import { SlotEnum } from '../constants';
+import { ReactNode } from 'react';
+import type { ID } from './id';
 
-export type Slot = `${SlotEnum}`;
+export type Slot = ID[] | Record<string, ID[]>;
+
+export type SlotElements<K extends string = string> = {
+  [key in K]?: ReactNode;
+};
