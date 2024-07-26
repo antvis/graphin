@@ -4,7 +4,7 @@ import type { Metadata } from './metadata';
 /**
  * 数据集基础类型
  */
-interface BaseDataset {
+export interface BaseDataset {
   /**
    * 数据集 ID
    */
@@ -18,7 +18,7 @@ interface BaseDataset {
 /**
  * 静态数据源类型
  */
-interface LocalDatasetSchema extends BaseDataset {
+export interface LocalDatasetSchema extends BaseDataset {
   /**
    * 数据类型
    */
@@ -32,7 +32,7 @@ interface LocalDatasetSchema extends BaseDataset {
 /**
  * 动态数据源类型
  */
-interface RemoteDatasetSchema extends BaseDataset {
+export interface RemoteDatasetSchema extends BaseDataset {
   /**
    * 数据类型
    */

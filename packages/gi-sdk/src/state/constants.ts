@@ -19,3 +19,7 @@ export enum GraphStoreEvent {
   'UPDATE' = 'graph:update',
   'UPDATE_OPTIONS' = 'graph:update-options',
 }
+
+export enum DatasetStoreEvent {
+  'UPDATE' = 'dataset:update',
+}

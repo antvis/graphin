@@ -3,6 +3,7 @@
  */
 import classnames from 'classnames';
 import React, { CSSProperties, PropsWithChildren } from 'react';
+import { PREFIX } from '../constants';
 import type { Application } from '../spec';
 import { useImplementWidgets } from '../utils/widget';
 
@@ -24,7 +25,7 @@ export const GIRender: React.FC<PropsWithChildren<GIRenderProps>> = (props) => {
   };
 
   return (
-    <div className={classnames('gi-sdk-container', className)} style={containerStyle}>
+    <div className={classnames(`${PREFIX}-container`, className)} style={containerStyle}>
       {renderWidgets}
       {children}
     </div>

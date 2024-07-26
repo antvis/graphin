@@ -4270,16 +4270,14 @@ export const config: Application = {
   dataset: {
     id: '4a4fee6d-f4e8-403b-a1e6-19fc7fcad418',
     metadata: {
-      name: '我链接的 GraphScope 数据',
+      name: '本地测试数据',
     },
-    type: 'remote',
-    serviceType: 'GS_SERVICE_INTIAL_GRAPH',
-    properties: {},
+    type: 'local',
+    data,
   },
   spec: {
     graph: {
       autoResize: true,
-      data,
       layout: { type: 'd3-force' },
       behaviors: ['drag-canvas', 'zoom-canvas', 'drag-element', 'click-select', 'hover-activate'],
       animation: false,

@@ -2,16 +2,18 @@ import type { Graph as G6Graph } from '@antv/g6';
 import { Graphin } from '@antv/graphin';
 import classnames from 'classnames';
 import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
-import { useGraph, useGraphOptions } from '../../hooks';
+import { PREFIX } from '../../constants';
+import { useDataset, useGraph, useGraphOptions } from '../../hooks';
+import { isLocalDataset } from '../../utils/dataset';
 
 export interface GraphContainerProps extends Pick<React.HTMLAttributes<HTMLDivElement>, 'id' | 'className' | 'style'> {}
 
 export const GraphContainer: React.FC<PropsWithChildren<GraphContainerProps>> = (props) => {
   const { className, style, children } = props;
-  const [options] = useGraphOptions();
+  const [options, setOptions] = useGraphOptions();
   const [, setGraphInstance] = useGraph();
   const [isReady, setIsReady] = useState(false);
-
+  const [dataset] = useDataset();
   const graphRef = useRef<G6Graph | null>(null);
 
   useEffect(() => {
@@ -20,10 +22,18 @@ export const GraphContainer: React.FC<PropsWithChildren<GraphContainerProps>> = 
     setGraphInstance(graphRef.current);
   }, [isReady]);
 
+  useEffect(() => {
+    if (isLocalDataset(dataset)) {
+      setOptions({
+        data: dataset.data,
+      });
+    }
+  }, [dataset]);
+
   return (
     <Graphin
       ref={graphRef}
-      className={classnames('gi-sdk-graph-container', className)}
+      className={classnames(`${PREFIX}-graph-container`, className)}
       style={style}
       options={options}
       onInit={() => setIsReady(true)}

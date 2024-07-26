@@ -1,5 +1,6 @@
 import type { GlobalModel } from '../context/types';
 import type { Application } from '../spec';
+import { DatasetStore } from './dataset';
 import { GlobalStore } from './global';
 import { GraphStore } from './graph';
 import { WidgetStore } from './widget';
@@ -10,6 +11,8 @@ class StateManager {
   public widgetStore: WidgetStore = new WidgetStore();
 
   public graphStore: GraphStore = new GraphStore();
+
+  public datasetStore: DatasetStore = new DatasetStore();
 
   constructor(initialGlobalState: GlobalModel) {
     this.initGlobalStore(initialGlobalState);
@@ -22,6 +25,7 @@ class StateManager {
   public initState(config: Application) {
     this.widgetStore.setWidgets(config.spec.widgets);
     this.graphStore.setGraphOptions(config.spec.graph);
+    this.datasetStore.setDataset(config.dataset);
   }
 }
 

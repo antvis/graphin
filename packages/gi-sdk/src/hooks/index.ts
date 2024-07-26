@@ -1,3 +1,4 @@
+export { useDataset } from './useDataset';
 export { useGlobalModel } from './useGlobalModel';
 export { useGraph } from './useGraph';
 export { useGraphOptions } from './useGraphOptions';
