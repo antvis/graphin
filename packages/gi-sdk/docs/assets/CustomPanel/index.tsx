@@ -10,4 +10,7 @@ export const CustomPanel: ImplementWidget<CustomPanelProps> = {
     description: '这是一个自定义面板',
   },
   component: CustomPanelComponent,
+  defaultProperties: {
+    count: 200,
+  },
 };

@@ -14,6 +14,7 @@ export const Demo: React.FC = () => {
       style={{ backgroundColor: '#bdd8e1' }}
       config={config}
       assets={assets}
+      initialGlobalState={{ panel: false, sider: true }}
     ></GISDK>
   );
 };

@@ -1,8 +1,10 @@
 import React from 'react';
 import type RegistryManager from '../registry';
+import type StateManager from '../state';
 
 export interface GIContextProps {
   registry: RegistryManager;
+  state: StateManager;
 }
 
 export const GIContext = React.createContext<GIContextProps>(null as any);

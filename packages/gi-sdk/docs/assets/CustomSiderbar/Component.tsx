@@ -1,22 +1,28 @@
 import type { ImplementWidgetProps } from '@antv/gi-sdk';
+import { useGlobalModel, useWidgetProps } from '@antv/gi-sdk';
 import { Button } from 'antd';
 import React from 'react';
 import { fontStyle } from '../../constant';
 
 export const CustomSidebar: React.FC<ImplementWidgetProps> = (props) => {
   const { slotElements } = props;
-  // const [globalModel] = useGlobalModel();
-  // const [, updateWidget] = useWidgets();
-  // const isPanelOpen = globalModel?.panel;
-  const isPanelOpen = true;
+  const [{ panel }, setGlobalModel] = useGlobalModel();
+  const [, updatePanelProperties] = useWidgetProps('custom-panel');
+
+  const openPanel = () => {
+    setGlobalModel({ panel: true });
+  };
 
   return (
     <div>
       <p>Sider</p>
-      <p>Panel {isPanelOpen ? <b style={fontStyle}>opened</b> : <b style={fontStyle}>closed</b>}</p>
+      <p>
+        Panel <b style={fontStyle}>{panel ? 'opened' : 'closed'}</b>
+      </p>
+      <Button onClick={openPanel}>Open Panel</Button>
       <Button
         onClick={() => {
-          // updateWidget({ name: 'custom-panel', properties: { count: Math.floor(Math.random() * 1000) } });
+          updatePanelProperties({ count: Math.floor(Math.random() * 1000) });
         }}
       >
         Change panel Count

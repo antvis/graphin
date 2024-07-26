@@ -46,6 +46,9 @@ export const config: Application = {
       {
         id: 'custom-panel',
         type: 'CustomPanel',
+        properties: {
+          count: 100,
+        },
       },
       {
         id: 'custom-canvas-component',

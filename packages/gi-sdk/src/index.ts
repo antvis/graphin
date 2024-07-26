@@ -2,7 +2,7 @@ export { GISDK } from './GISDK';
 export { GIRuntimeApp } from './runtime';
 
 export { useGIContext } from './context';
-export { useRegistryManger } from './hooks';
+export { useGlobalModel, useRegistryManger, useStateManger, useWidgetProps } from './hooks';
 
 export type * from './context/types';
 export type { GIRuntimeAppProps } from './runtime';

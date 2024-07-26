@@ -1,12 +1,13 @@
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import React, { PropsWithChildren, useState } from 'react';
+import { useGlobalModel } from '@antv/gi-sdk';
+import React, { PropsWithChildren } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { PREFIX } from '../../../../constant';
 import './index.less';
 
 export const Sider: React.FC<PropsWithChildren> = (props) => {
   const { children } = props;
-  const [open, setOpen] = useState(false);
+  const [{ sider }, updateGlobalModel] = useGlobalModel();
 
   return (
     <React.Fragment>
@@ -15,13 +16,13 @@ export const Sider: React.FC<PropsWithChildren> = (props) => {
           <div
             className={`${PREFIX}-sider-icon`}
             onClick={() => {
-              setOpen((prev) => !prev);
+              updateGlobalModel({ sider: !sider });
             }}
           >
-            {open ? <DoubleLeftOutlined /> : <DoubleRightOutlined />}
+            {sider ? <DoubleLeftOutlined /> : <DoubleRightOutlined />}
           </div>
         </div>
-        <CSSTransition in={open} classNames="fade" timeout={400}>
+        <CSSTransition in={sider} classNames="fade" timeout={400}>
           <div className={`${PREFIX}-sider-content`}>{children}</div>
         </CSSTransition>
       </div>

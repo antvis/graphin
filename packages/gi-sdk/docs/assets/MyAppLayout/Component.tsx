@@ -1,4 +1,4 @@
-import type { ImplementWidgetProps } from '@antv/gi-sdk';
+import { type ImplementWidgetProps } from '@antv/gi-sdk';
 import { Graphin, GraphinProps } from '@antv/graphin';
 import React, { useEffect, useMemo, useState } from 'react';
 import { PREFIX } from '../../constant';

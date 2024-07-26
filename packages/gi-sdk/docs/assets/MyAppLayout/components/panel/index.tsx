@@ -1,18 +1,19 @@
+import { useGlobalModel } from '@antv/gi-sdk';
 import { Drawer } from 'antd';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren } from 'react';
 import { PREFIX } from '../../../../constant';
 
 export const Panel: React.FC<PropsWithChildren> = (props) => {
   const { children } = props;
-  const [open, setOpen] = useState(false);
+  const [{ panel }, updateGlobalModel] = useGlobalModel();
 
   const onClose = () => {
-    setOpen(false);
+    updateGlobalModel({ panel: false });
   };
 
   return (
     <div className={`${PREFIX}-panel`}>
-      <Drawer placement="right" onClose={onClose} open={open} getContainer={false}>
+      <Drawer placement="right" onClose={onClose} open={panel} getContainer={false}>
         {children}
       </Drawer>
     </div>

@@ -8,8 +8,6 @@ export interface CustomPanelProps extends ImplementWidgetProps {
 
 export const CustomPanel: React.FC<CustomPanelProps> = (props) => {
   const { count } = props;
-  // const [globalModel] = useGlobalModel();
-  // const isSiderOpen = globalModel?.sider;
 
   const isSiderOpen = true;
 

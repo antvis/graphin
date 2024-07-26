@@ -6,9 +6,9 @@ import type { GIRenderProps } from './runtime/Render';
 export interface GISDKProps extends GIRenderProps, GIRuntimeAppProps {}
 
 export const GISDK: React.FC<GISDKProps> = (props) => {
-  const { assets, ...restProps } = props;
+  const { assets, initialGlobalState, ...restProps } = props;
 
-  const runtime = useMemo(() => new GIRuntimeApp({ assets }), [assets]);
+  const runtime = useMemo(() => new GIRuntimeApp({ assets, initialGlobalState }), [assets, initialGlobalState]);
   const { App } = runtime;
 
   return <App {...restProps} />;

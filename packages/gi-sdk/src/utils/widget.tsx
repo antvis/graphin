@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
-import { useRegistryManger } from '../hooks';
+import { useRegistryManger, useWidgetProps } from '../hooks';
 import type { WidgetSchema } from '../spec';
 import type { SlotElements } from '../types';
 import { parseSlot } from './slot';
@@ -42,7 +42,8 @@ export const useImplementWidgets = (widgets: WidgetSchema[]): React.ReactNode =>
     (widget: WidgetSchema) => {
       const { id: widgetId, type, slots } = widget;
       const widgetOption = registryManager.getWidget(type);
-      const properties = Object.assign({}, widgetOption.defaultProperties, widget.properties);
+      const [properties] = useWidgetProps(widgetId);
+      const mergedProperties = Object.assign({}, widgetOption.defaultProperties, properties);
       const ImplWidget = widgetOption.component;
 
       let slotElements: SlotElements = {};
@@ -65,7 +66,7 @@ export const useImplementWidgets = (widgets: WidgetSchema[]): React.ReactNode =>
             data-widget-id={widgetId}
             data-widget-name={widgetOption.metadata.name}
             slotElements={slotElements}
-            {...properties}
+            {...mergedProperties}
           />
         </React.Fragment>
       );
