@@ -1,11 +1,13 @@
 import type { ImplementWidgetProps } from '@antv/gi-sdk';
-import { useGlobalModel } from '@antv/gi-sdk';
+import { useGlobalModel, useGraph } from '@antv/gi-sdk';
 import React from 'react';
 
 export const CustomCanvasComponent: React.FC<ImplementWidgetProps> = () => {
   // const [, updateGlobalModel] = useGlobalModel();
   // const graph = useGraph();
   const [, setGlobalModel] = useGlobalModel();
+  const [graph] = useGraph();
+  console.log('graph', graph);
 
   // useEventSubscribe<IPointerEvent<Node>>(NodeEvent.CLICK, (e) => {
   //   const nodeId = e.target.id;

@@ -1,5 +1,5 @@
 import type { ImplementWidgetProps } from '@antv/gi-sdk';
-import { useGlobalModel, useWidgetProps } from '@antv/gi-sdk';
+import { useGlobalModel, useGraphOptions, useWidgetProps } from '@antv/gi-sdk';
 import { Button } from 'antd';
 import React from 'react';
 import { fontStyle } from '../../constant';
@@ -8,6 +8,7 @@ export const CustomSidebar: React.FC<ImplementWidgetProps> = (props) => {
   const { slotElements } = props;
   const [{ panel }, setGlobalModel] = useGlobalModel();
   const [, updatePanelProperties] = useWidgetProps('custom-panel');
+  const [, updateOptions] = useGraphOptions();
 
   const openPanel = () => {
     setGlobalModel({ panel: true });
@@ -28,6 +29,13 @@ export const CustomSidebar: React.FC<ImplementWidgetProps> = (props) => {
         Change panel Count
       </Button>
       <b style={fontStyle}>{slotElements.default}</b>
+      <Button
+        onClick={() => {
+          updateOptions((options) => ({ ...options, layout: { type: 'dagre' } }));
+        }}
+      >
+        Change Layout
+      </Button>
     </div>
   );
 };

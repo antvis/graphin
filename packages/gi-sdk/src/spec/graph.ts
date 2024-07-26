@@ -1,3 +1,3 @@
-import type { GraphinProps } from '@antv/graphin';
+import type { GraphOptions } from '@antv/g6';
 
-export type GraphSchema = GraphinProps;
+export type GraphSchema = GraphOptions;

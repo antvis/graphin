@@ -1,9 +1,11 @@
+export { GraphContainer } from './components/GraphContainer';
 export { GISDK } from './GISDK';
 export { GIRuntimeApp } from './runtime';
 
 export { useGIContext } from './context';
-export { useGlobalModel, useRegistryManger, useStateManger, useWidgetProps } from './hooks';
+export { useGlobalModel, useGraph, useGraphOptions, useRegistryManger, useStateManger, useWidgetProps } from './hooks';
 
+export type { GraphContainerProps } from './components/GraphContainer';
 export type * from './context/types';
 export type { GIRuntimeAppProps } from './runtime';
 export type { GIRenderProps } from './runtime/Render';

@@ -11,3 +11,11 @@ export enum GlobalStoreEvent {
 export enum WidgetStoreEvent {
   'UPDATE_PROPS' = 'widget:update-properties',
 }
+
+/**
+ * 图状态管理事件
+ */
+export enum GraphStoreEvent {
+  'UPDATE' = 'graph:update',
+  'UPDATE_OPTIONS' = 'graph:update-options',
+}
