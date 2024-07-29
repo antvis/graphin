@@ -3,7 +3,16 @@ export { GISDK } from './GISDK';
 export { GIRuntimeApp } from './runtime';
 
 export { useGIContext } from './context';
-export { useGlobalModel, useGraph, useGraphOptions, useRegistryManger, useStateManger, useWidgetProps } from './hooks';
+export {
+  useEventPublish,
+  useEventSubscribe,
+  useGlobalModel,
+  useGraph,
+  useGraphOptions,
+  useRegistryManger,
+  useStateManger,
+  useWidgetProps,
+} from './hooks';
 
 export type { GraphContainerProps } from './components/GraphContainer';
 export type * from './context/types';

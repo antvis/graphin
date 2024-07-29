@@ -1,3 +1,4 @@
+import type EventEmitter from '@antv/event-emitter';
 import React from 'react';
 import type RegistryManager from '../registry';
 import type StateManager from '../state';
@@ -5,6 +6,7 @@ import type StateManager from '../state';
 export interface GIContextProps {
   registry: RegistryManager;
   state: StateManager;
+  eventBus: EventEmitter;
 }
 
 export const GIContext = React.createContext<GIContextProps>(null as any);
