@@ -1,7 +1,7 @@
 import type { Graph as G6Graph } from '@antv/g6';
 import { useEffect, useState } from 'react';
 import { GraphStoreEvent } from '../state/constants';
-import { useStateManger } from './useStateManger';
+import { useStateManager } from './useStateManager';
 
 /**
  * Hook for graph instance management.
@@ -9,7 +9,7 @@ import { useStateManger } from './useStateManger';
  * @public
  */
 export const useGraph = () => {
-  const { graphStore } = useStateManger();
+  const { graphStore } = useStateManager();
   const [graph, setGraph] = useState<G6Graph | null>(graphStore.getGraphInstance());
 
   useEffect(() => {

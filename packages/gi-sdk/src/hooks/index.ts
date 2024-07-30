@@ -5,5 +5,5 @@ export { useGlobalModel } from './useGlobalModel';
 export { useGraph } from './useGraph';
 export { useGraphOptions } from './useGraphOptions';
 export { useRegistryManager } from './useRegistryManager';
-export { useStateManger } from './useStateManger';
+export { useStateManager } from './useStateManager';
 export { useWidgetProps } from './useWidgetProps';

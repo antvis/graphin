@@ -5,7 +5,7 @@ import { useGIContext } from '../context';
  * @returns state manager instance
  * @internal
  */
-export const useStateManger = () => {
+export const useStateManager = () => {
   const { state } = useGIContext();
 
   return state;

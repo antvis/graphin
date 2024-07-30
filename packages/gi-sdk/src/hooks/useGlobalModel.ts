@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { GlobalModel } from '../context/types';
 import { GlobalStoreEvent } from '../state/constants';
 import type { CallableValue } from '../types';
-import { useStateManger } from './useStateManger';
+import { useStateManager } from './useStateManager';
 
 /**
  * Hook for global model state management.
@@ -12,7 +12,7 @@ import { useStateManger } from './useStateManger';
  * @public
  */
 export const useGlobalModel = <T extends GlobalModel = GlobalModel, K extends keyof T = keyof T>(key?: K) => {
-  const { globalStore } = useStateManger();
+  const { globalStore } = useStateManager();
   const global = globalStore.getGlobal() as T;
   const initialModel = key ? global[key] : global;
   const [model, setModel] = useState<T | T[K]>(initialModel);

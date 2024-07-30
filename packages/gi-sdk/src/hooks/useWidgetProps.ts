@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { WidgetStoreEvent } from '../state/constants';
 import type { ID } from '../types';
-import { useStateManger } from './useStateManger';
+import { useStateManager } from './useStateManager';
 
 /**
  * Hook for widget schema properties management.
@@ -10,7 +10,7 @@ import { useStateManger } from './useStateManger';
  * @public
  */
 export const useWidgetProps = <Properties extends Record<string, unknown> = Record<string, unknown>>(widgetId: ID) => {
-  const { widgetStore } = useStateManger();
+  const { widgetStore } = useStateManager();
 
   const [properties, setProperties] = useState<Properties>(widgetStore.getWidgetProperties<Properties>(widgetId));
 
