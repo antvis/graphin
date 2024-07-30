@@ -1,0 +1,27 @@
+.my-layout-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .my-layout-header {
+    height: 48px;
+    border-bottom: 1px solid rgb(33 33 33 / 6%);
+  }
+
+  .my-layout-content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+
+    .my-layout-sider {
+      width: 300px;
+      background-color: #fafafa;
+      border-right: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 24px;
+    }
+
+    .my-layout-graph-container {
+      flex: 1;
+    }
+  }
+}

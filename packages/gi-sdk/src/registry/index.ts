@@ -30,7 +30,11 @@ class RegistryManager {
   public getWidget(name: string): ImplementWidget {
     const w = this.widgets.get(name);
     if (!w) {
-      const empty = { metadata: { name: '' }, version: 'v0.1', component: () => `Widget with name ${name} not found.` };
+      const empty = {
+        metadata: { name: '' },
+        version: '0.1',
+        component: () => `Widget with name ${name} not found.`,
+      };
       // eslint-disable-next-line no-console
       console.error(`[gi-sdk]: Widget with name ${name} not found.`);
       return empty as ImplementWidget;

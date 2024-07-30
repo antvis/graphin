@@ -4,6 +4,11 @@ import type { DatasetSchema } from '../spec';
 import { CallableValue } from '../types';
 import { useStateManger } from './useStateManger';
 
+/**
+ * Hook for dataset state management.
+ * @returns [dataset, updateDataset]
+ * @internal
+ */
 export const useDataset = () => {
   const { datasetStore } = useStateManger();
   const [dataset, setDataset] = useState<DatasetSchema>(datasetStore.getDataset());

@@ -131,20 +131,32 @@ export const config: Application = {
     widgets: [
       {
         id: 'layout',
-        type: 'MyAppLayout',
+        type: 'HolyGrailLayout',
         properties: {
           showHeader: true,
+          showFooter: true,
+          showFloatPanel: true,
+          floatPanel: {
+            afterOpenChange: (open) => {
+              alert('afterOpenChange');
+            },
+          },
         },
         slots: {
           header: ['title'],
-          sider: ['global-state-tester', 'event-bus-tester', 'graph-option-tester'],
-          panel: ['float-panel-content'],
+          sidePanel: ['global-state-tester', 'event-bus-tester', 'graph-option-tester'],
+          floatPanel: ['float-panel-content'],
           canvas: ['bind-click-node'],
+          footer: ['copyright'],
         },
       },
       {
         id: 'title',
         type: 'AppTitle',
+      },
+      {
+        id: 'copyright',
+        type: 'Copyright',
       },
       {
         id: 'event-bus-tester',

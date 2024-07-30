@@ -5,6 +5,11 @@ import { GraphStoreEvent } from '../state/constants';
 import { CallableValue } from '../types';
 import { useStateManger } from './useStateManger';
 
+/**
+ * Hook for graph options state management.
+ * @returns [options, updateOptions]
+ * @public
+ */
 export const useGraphOptions = () => {
   const { graphStore } = useStateManger();
   const [options, setOptions] = useState<GraphOptions>(graphStore.getGraphOptions());

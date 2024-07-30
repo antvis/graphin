@@ -1,10 +1,12 @@
 import type { Graph as G6Graph } from '@antv/g6';
 import { Graphin } from '@antv/graphin';
 import classnames from 'classnames';
-import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PREFIX } from '../../constants';
 import { useDataset, useGraph, useGraphOptions } from '../../hooks';
 import { isLocalDataset } from '../../utils/dataset';
+import './index.less';
 
 export interface GraphContainerProps extends Pick<React.HTMLAttributes<HTMLDivElement>, 'id' | 'className' | 'style'> {}
 
@@ -31,14 +33,10 @@ export const GraphContainer: React.FC<PropsWithChildren<GraphContainerProps>> = 
   }, [dataset]);
 
   return (
-    <Graphin
-      ref={graphRef}
-      className={classnames(`${PREFIX}-graph-container`, className)}
-      style={style}
-      options={options}
-      onInit={() => setIsReady(true)}
-    >
-      {children}
-    </Graphin>
+    <div className={classnames(`${PREFIX}-graph-container`, className)}>
+      <Graphin ref={graphRef} style={style} options={options} onInit={() => setIsReady(true)}>
+        {children}
+      </Graphin>
+    </div>
   );
 };

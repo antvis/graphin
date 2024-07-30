@@ -10,7 +10,6 @@ import {
 } from '@antv/gi-sdk';
 import { Button, Space } from 'antd';
 import React, { useEffect } from 'react';
-import { MyAppLayout } from './MyAppLayout';
 
 const fontStyle = {
   fontSize: 24,
@@ -27,7 +26,32 @@ const AppTitle: ImplementWidget<ImplementWidgetProps> = {
   component: () => {
     return (
       <div style={{ height: 48, fontSize: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        GI-SDK 测试应用
+        测试用图应用
+      </div>
+    );
+  },
+};
+
+const Copyright: ImplementWidget = {
+  version: '0.1',
+  metadata: {
+    name: 'Copyright',
+    displayName: 'Copyright',
+    description: '版权信息',
+  },
+  component: () => {
+    return (
+      <div
+        style={{
+          color: 'rgba(0, 0, 0, 0.65)',
+          fontSize: '10px',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        2024 Your Company Name. All rights reserved.
       </div>
     );
   },
@@ -63,11 +87,11 @@ const GlobalStateTester: ImplementWidget = {
     description: '测试全局状态的变化',
   },
   component: () => {
-    const [{ panel }, setGlobalModel] = useGlobalModel();
+    const [panel, setPanel] = useGlobalModel('panel');
     const [, updatePanelProperties] = useWidgetProps('float-panel-content');
 
     const openPanel = () => {
-      setGlobalModel((prev) => ({ ...prev, panel: true }));
+      setPanel(true);
     };
 
     const changePanelCount = () => {
@@ -95,11 +119,11 @@ const EventBusTester: ImplementWidget = {
     description: '采用事件机制进行组件间通信',
   },
   component: () => {
-    const [{ a = 0 }, setGlobalModel] = useGlobalModel();
+    const [a, setA] = useGlobalModel('a');
     const emit = useEventPublish();
 
     useEventSubscribe('custom-sidebar:change', () => {
-      setGlobalModel((prev) => ({ ...prev, a: Math.floor(Math.random() * 1000) }));
+      setA(Math.floor(Math.random() * 1000));
     });
 
     const triggerChange = () => {
@@ -150,7 +174,8 @@ const ClickNodeWidget: ImplementWidget = {
     description: '点击节点',
   },
   component: () => {
-    const [, setGlobalModel] = useGlobalModel();
+    const [, setCurrentNode] = useGlobalModel('currentNode');
+    const [, setPanel] = useGlobalModel('panel');
     const [graph] = useGraph();
 
     useEffect(() => {
@@ -158,11 +183,13 @@ const ClickNodeWidget: ImplementWidget = {
 
       const clickNode = (e) => {
         const nodeId = e.target.id;
-        setGlobalModel((prev) => ({ ...prev, currentNode: graph?.getNodeData(nodeId), panel: true }));
+        setCurrentNode(graph?.getNodeData(nodeId));
+        setPanel(true);
       };
 
       const clickCanvas = () => {
-        setGlobalModel((prev) => ({ ...prev, currentNode: null, panel: false }));
+        setCurrentNode(null);
+        setPanel(false);
       };
 
       graph.on(NodeEvent.CLICK, clickNode);
@@ -182,11 +209,11 @@ export const myAssetPackage: AssetPackage = {
   version: '0.1',
   widgets: [
     AppTitle,
+    Copyright,
     ClickNodeWidget,
     FloatPanelContent,
     EventBusTester,
     GlobalStateTester,
     GraphOptionTester,
-    MyAppLayout,
   ] as ImplementWidget<ImplementWidgetProps>[],
 };

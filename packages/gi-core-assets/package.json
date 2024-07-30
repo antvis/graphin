@@ -1,12 +1,13 @@
 {
-  "name": "@antv/gi-sdk",
-  "version": "3.0.0-alpha.0",
-  "description": "SDK for Graph Insight Application",
+  "name": "@antv/gi-core-assets",
+  "version": "1.0.0-alpha.0",
+  "description": "Core assets for @antv/gi-sdk",
   "repository": {
     "type": "git",
     "url": "https://github.com/antvis/Graphin.git"
   },
   "license": "ISC",
+  "author": "https://github.com/orgs/antvis/people",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
@@ -29,20 +30,16 @@
     "watch": "pnpm lib:es --w"
   },
   "dependencies": {
-    "@antv/event-emitter": "^0.1.3",
+    "@ant-design/icons": "^4.8.1",
     "@antv/g6": "^5.0.0",
-    "@antv/graphin": "^3.0.0",
-    "@antv/util": "^3.3.7",
-    "antd": "^5.13.2",
-    "classnames": "^2.5.1"
+    "@antv/gi-sdk": "workspace:*",
+    "ahooks": "^3.8.0"
   },
   "devDependencies": {
-    "less": "^4.2.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
   "peerDependencies": {
-    "less": "^4.2.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
