@@ -3,7 +3,7 @@ import type { MyAppLayoutProps } from './Component';
 import { MyAppLayout as MyAppLayoutComponent } from './Component';
 
 export const MyAppLayout: ImplementWidget<MyAppLayoutProps> = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'MyAppLayout',
     displayName: '我的布局组件',

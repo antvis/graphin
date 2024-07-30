@@ -102,7 +102,7 @@ const data = {
 };
 
 export const config: Application = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: '测试应用',
   },

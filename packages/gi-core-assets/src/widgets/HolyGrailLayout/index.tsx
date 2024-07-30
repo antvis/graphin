@@ -3,7 +3,7 @@ import type { HolyGrailLayoutProps } from './Component';
 import { HolyGrailLayout as HolyGrailLayoutComponent } from './Component';
 
 export const HolyGrailLayout: ImplementWidget<HolyGrailLayoutProps> = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'HolyGrailLayout',
     displayName: '圣杯布局',

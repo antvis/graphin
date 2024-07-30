@@ -18,7 +18,7 @@ const fontStyle = {
 };
 
 const AppTitle: ImplementWidget<ImplementWidgetProps> = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'AppTitle',
     displayName: '应用名',
@@ -34,7 +34,7 @@ const AppTitle: ImplementWidget<ImplementWidgetProps> = {
 };
 
 const GraphOptionTester: ImplementWidget = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'GraphOptionTester',
     displayName: '图表配置测试资产',
@@ -56,7 +56,7 @@ const GraphOptionTester: ImplementWidget = {
 };
 
 const GlobalStateTester: ImplementWidget = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'GlobalStateTester',
     displayName: '全局状态测试资产',
@@ -88,7 +88,7 @@ const GlobalStateTester: ImplementWidget = {
 };
 
 const EventBusTester: ImplementWidget = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'EventBusTester',
     displayName: '事件总线测试资产',
@@ -118,7 +118,7 @@ const EventBusTester: ImplementWidget = {
 };
 
 const FloatPanelContent: ImplementWidget<ImplementWidgetProps & { count: number }> = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'FloatPanelContent',
     displayName: '浮动面板内容',
@@ -143,7 +143,7 @@ const FloatPanelContent: ImplementWidget<ImplementWidgetProps & { count: number 
 };
 
 const ClickNodeWidget: ImplementWidget = {
-  version: 'v0.1',
+  version: '0.1',
   metadata: {
     name: 'ClickNodeWidget',
     displayName: '点击节点',
@@ -179,7 +179,7 @@ const ClickNodeWidget: ImplementWidget = {
 };
 
 export const myAssetPackage: AssetPackage = {
-  version: 'v0.1',
+  version: '0.1',
   widgets: [
     AppTitle,
     ClickNodeWidget,
