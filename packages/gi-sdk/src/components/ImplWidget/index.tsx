@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useRegistryManager, useStateManger, useWidgetProps } from '../../hooks';
+import { useRegistryManager, useStateManager, useWidgetProps } from '../../hooks';
 import type { WidgetSchema } from '../../spec';
 import type { SlotElements } from '../../types';
 import { parseSlot } from '../../utils/slot';
@@ -19,7 +19,7 @@ export const ImplWidget: React.FC<ImplWidgetProps> = ({ widget }) => {
   const [properties] = useWidgetProps(widgetId);
   const mergedProperties = useMemo(() => Object.assign({}, defaultProperties, properties), [properties]);
 
-  const widgets = useStateManger().widgetStore.getWidgets();
+  const widgets = useStateManager().widgetStore.getWidgets();
 
   const slotElements: SlotElements = useMemo(() => {
     let elements = {};

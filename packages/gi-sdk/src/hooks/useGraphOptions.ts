@@ -3,7 +3,7 @@ import { isFunction } from '@antv/util';
 import { useEffect, useState } from 'react';
 import { GraphStoreEvent } from '../state/constants';
 import type { CallableValue } from '../types';
-import { useStateManger } from './useStateManger';
+import { useStateManager } from './useStateManager';
 
 /**
  * Hook for graph options state management.
@@ -11,7 +11,7 @@ import { useStateManger } from './useStateManger';
  * @public
  */
 export const useGraphOptions = () => {
-  const { graphStore } = useStateManger();
+  const { graphStore } = useStateManager();
   const [options, setOptions] = useState<GraphOptions>(graphStore.getGraphOptions());
 
   useEffect(() => {

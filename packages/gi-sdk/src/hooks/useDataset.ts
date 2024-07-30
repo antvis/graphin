@@ -10,14 +10,14 @@ import type { Dataset } from '../types/dataset';
 import { isRemoteDataset } from '../utils/dataset';
 import { queryClient } from '../utils/service';
 import { useRegistryManager } from './useRegistryManager';
-import { useStateManger } from './useStateManger';
+import { useStateManager } from './useStateManager';
 
 /**
  * 处理 remote dataset schema 并获取数据，写到 dataset 中
  * @param dataset dataset schema
  */
 const inferRemoteDataset = (dataset: DatasetSchema) => {
-  const { datasetStore } = useStateManger();
+  const { datasetStore } = useStateManager();
   const registryManager = useRegistryManager();
 
   if (!isRemoteDataset(dataset)) return;
@@ -44,7 +44,7 @@ const inferRemoteDataset = (dataset: DatasetSchema) => {
  * @internal
  */
 export const useDataset = () => {
-  const { datasetStore } = useStateManger();
+  const { datasetStore } = useStateManager();
   const [dataset, setDataset] = useState<Dataset>(datasetStore.getDataset());
 
   inferRemoteDataset(dataset);
