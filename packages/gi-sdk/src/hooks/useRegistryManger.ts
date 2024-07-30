@@ -5,7 +5,7 @@ import { useGIContext } from '../context';
  * @returns registry manager instance
  * @public
  */
-export const useRegistryManger = () => {
+export const useRegistryManager = () => {
   const { registry } = useGIContext();
 
   return registry;

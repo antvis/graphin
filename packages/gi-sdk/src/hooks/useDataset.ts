@@ -9,7 +9,7 @@ import type { CallableValue } from '../types';
 import type { Dataset } from '../types/dataset';
 import { isRemoteDataset } from '../utils/dataset';
 import { queryClient } from '../utils/service';
-import { useRegistryManger } from './useRegistryManger';
+import { useRegistryManager } from './useRegistryManager';
 import { useStateManger } from './useStateManger';
 
 /**
@@ -18,7 +18,7 @@ import { useStateManger } from './useStateManger';
  */
 const inferRemoteDataset = (dataset: DatasetSchema) => {
   const { datasetStore } = useStateManger();
-  const registryManager = useRegistryManger();
+  const registryManager = useRegistryManager();
 
   if (!isRemoteDataset(dataset)) return;
 

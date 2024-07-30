@@ -9,7 +9,7 @@ export {
   useGlobalModel,
   useGraph,
   useGraphOptions,
-  useRegistryManger,
+  useRegistryManager,
   useStateManger,
   useWidgetProps,
 } from './hooks';
