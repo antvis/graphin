@@ -5,7 +5,6 @@ import type { PropsWithChildren } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { PREFIX } from '../../constants';
 import { useDataset, useGraph, useGraphOptions } from '../../hooks';
-import { isLocalDataset } from '../../utils/dataset';
 import './index.less';
 
 export interface GraphContainerProps extends Pick<React.HTMLAttributes<HTMLDivElement>, 'id' | 'className' | 'style'> {}
@@ -25,11 +24,7 @@ export const GraphContainer: React.FC<PropsWithChildren<GraphContainerProps>> = 
   }, [isReady]);
 
   useEffect(() => {
-    if (isLocalDataset(dataset)) {
-      setOptions({
-        data: dataset.data,
-      });
-    }
+    setOptions({ data: dataset.data });
   }, [dataset]);
 
   return (
