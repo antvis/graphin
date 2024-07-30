@@ -1,6 +1,7 @@
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { useGlobalModel } from '@antv/gi-sdk';
-import React, { PropsWithChildren, useMemo } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { useMemo } from 'react';
 import { WIDGET_PREFIX } from '../../constant';
 
 export interface SidePanelProps {

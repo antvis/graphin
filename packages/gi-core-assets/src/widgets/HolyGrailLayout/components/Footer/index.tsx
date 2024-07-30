@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
 import { WIDGET_PREFIX } from '../../constant';
 
 export const Footer: React.FC<PropsWithChildren> = React.memo((props) => {

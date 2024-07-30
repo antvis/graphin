@@ -2,7 +2,8 @@
  * 图应用渲染组件
  */
 import classnames from 'classnames';
-import React, { CSSProperties, PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { CSSProperties } from 'react';
 import { PREFIX } from '../constants';
 import type { Application } from '../spec';
 import { useImplementWidgets } from '../utils/widget';

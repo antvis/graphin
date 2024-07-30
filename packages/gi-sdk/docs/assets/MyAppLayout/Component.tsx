@@ -1,7 +1,8 @@
 import type { ImplementWidgetProps } from '@antv/gi-sdk';
 import { GraphContainer, useGlobalModel } from '@antv/gi-sdk';
 import { Drawer } from 'antd';
-import React, { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
 import './Component.less';
 
 type Slot = 'header' | 'sider' | 'panel' | 'canvas';

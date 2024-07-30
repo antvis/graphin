@@ -1,7 +1,8 @@
 import type { Graph as G6Graph } from '@antv/g6';
 import { Graphin } from '@antv/graphin';
 import classnames from 'classnames';
-import React, { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PREFIX } from '../../constants';
 import { useDataset, useGraph, useGraphOptions } from '../../hooks';
 import { isLocalDataset } from '../../utils/dataset';

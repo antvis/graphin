@@ -1,7 +1,8 @@
 import { useGlobalModel } from '@antv/gi-sdk';
 import type { DrawerProps } from 'antd';
 import { Drawer } from 'antd';
-import React, { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
 import { WIDGET_PREFIX } from '../../constant';
 
 export interface FloatPanelProps extends DrawerProps {}
