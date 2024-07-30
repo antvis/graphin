@@ -18,7 +18,7 @@ export interface BaseDataset {
 /**
  * 静态数据源类型
  */
-export interface LocalDatasetSchema extends BaseDataset {
+export interface LocalDatasetSchema<D extends GraphData = GraphData> extends BaseDataset {
   /**
    * 数据类型
    */
@@ -26,7 +26,7 @@ export interface LocalDatasetSchema extends BaseDataset {
   /**
    * 图数据
    */
-  data: GraphData;
+  data: D;
 }
 
 /**

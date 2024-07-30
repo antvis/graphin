@@ -1,4 +1,5 @@
 import type { AssetPackage } from '@antv/gi-sdk';
+import { FetchData } from './services';
 import { HolyGrailLayout } from './widgets';
 
 const GI_CORE_ASSETS: AssetPackage = {
@@ -8,7 +9,7 @@ const GI_CORE_ASSETS: AssetPackage = {
     displayName: 'GI 核心资产包',
   },
   widgets: [HolyGrailLayout],
-  services: [],
+  services: [FetchData],
 };
 
 export default GI_CORE_ASSETS;

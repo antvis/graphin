@@ -2,7 +2,7 @@ import type { GraphOptions } from '@antv/g6';
 import { isFunction } from '@antv/util';
 import { useEffect, useState } from 'react';
 import { GraphStoreEvent } from '../state/constants';
-import { CallableValue } from '../types';
+import type { CallableValue } from '../types';
 import { useStateManger } from './useStateManger';
 
 /**
