@@ -5,6 +5,12 @@ import { GlobalStoreEvent } from '../state/constants';
 import type { CallableValue } from '../types';
 import { useStateManger } from './useStateManger';
 
+/**
+ * Hook for global model state management.
+ * @param key - global model key
+ * @returns [model, updateModel]
+ * @public
+ */
 export const useGlobalModel = <T extends GlobalModel = GlobalModel, K extends keyof T = keyof T>(key?: K) => {
   const { globalStore } = useStateManger();
   const global = globalStore.getGlobal() as T;

@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react';
 import { GraphStoreEvent } from '../state/constants';
 import { useStateManger } from './useStateManger';
 
+/**
+ * Hook for graph instance management.
+ * @returns [graph, updateGraph]
+ * @public
+ */
 export const useGraph = () => {
   const { graphStore } = useStateManger();
   const [graph, setGraph] = useState<G6Graph | null>(graphStore.getGraphInstance());

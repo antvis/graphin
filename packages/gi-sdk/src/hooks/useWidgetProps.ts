@@ -3,6 +3,12 @@ import { WidgetStoreEvent } from '../state/constants';
 import type { ID } from '../types';
 import { useStateManger } from './useStateManger';
 
+/**
+ * Hook for widget schema properties management.
+ * @param widgetId - widget id
+ * @returns [properties, updateProperties]
+ * @public
+ */
 export const useWidgetProps = <Properties extends Record<string, unknown> = Record<string, unknown>>(widgetId: ID) => {
   const { widgetStore } = useStateManger();
 
