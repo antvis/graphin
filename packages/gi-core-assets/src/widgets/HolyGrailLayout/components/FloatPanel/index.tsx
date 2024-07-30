@@ -4,7 +4,9 @@ import { Drawer } from 'antd';
 import React, { PropsWithChildren } from 'react';
 import { WIDGET_PREFIX } from '../../constant';
 
-export const FloatPanel: React.FC<PropsWithChildren<DrawerProps>> = React.memo((props) => {
+export interface FloatPanelProps extends DrawerProps {}
+
+export const FloatPanel: React.FC<PropsWithChildren<FloatPanelProps>> = React.memo((props) => {
   const { children, ...drawerProps } = props;
   const [panel, setPanel] = useGlobalModel('panel');
 
