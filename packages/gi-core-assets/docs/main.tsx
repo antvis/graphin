@@ -1,11 +1,12 @@
+import GICoreAssets from '@antv/gi-core-assets';
 import { GISDK } from '@antv/gi-sdk';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { myAssetPackage } from './assets';
+import { myAssetPackage } from './asset';
 import { config } from './config';
 
 export const Demo: React.FC = () => {
-  const assets = [myAssetPackage];
+  const assets = [GICoreAssets, myAssetPackage];
 
   return (
     <GISDK

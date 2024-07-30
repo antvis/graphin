@@ -16,6 +16,5 @@
     "isolatedModules": false,
     "noImplicitAny": false,
     "downlevelIteration": true
-  },
-  "include": ["packages/graphin/src", "packages/gi-sdk/src"]
+  }
 }

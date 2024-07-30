@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "strict": true,
+    "paths": {
+      "@antv/gi-sdk": ["../gi-sdk/src"],
+      "@antv/gi-core-assets": ["./src"]
+    }
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src", "docs"]
+}
