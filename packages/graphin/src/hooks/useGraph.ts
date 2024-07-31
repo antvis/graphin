@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
 import { Graph } from '@antv/g6';
+import { useEffect, useRef, useState } from 'react';
 import type { GraphinProps } from '../types';
 
 /**

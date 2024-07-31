@@ -1,5 +1,5 @@
-import React from 'react';
 import { Select, Spin } from 'antd';
+import React from 'react';
 import { useGraphin } from '../../context';
 import './index.less';
 
@@ -15,7 +15,7 @@ interface LayoutSelectorProps {
   value?: string;
 }
 
-export const LayoutSelector: React.FC<LayoutSelectorProps> = props => {
+export const LayoutSelector: React.FC<LayoutSelectorProps> = (props) => {
   const { value, onChange, options } = props;
   const { graph, isReady } = useGraphin();
 
@@ -23,7 +23,7 @@ export const LayoutSelector: React.FC<LayoutSelectorProps> = props => {
     <div className="graphin-layout-selector">
       <Spin spinning={!isReady}>
         <Select className="selector" value={value} onChange={onChange}>
-          {options.map(item => {
+          {options.map((item) => {
             const { type, label, icon } = item;
             return (
               <Select.Option key={type} value={type}>
