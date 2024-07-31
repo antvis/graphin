@@ -1,16 +1,16 @@
-import ReactDOM from 'react-dom/client';
-import React, { useState } from 'react';
-import { Graphin } from '../src';
-import { LayoutSelector } from '../src/components';
-import type { SingleLayoutOptions } from '@antv/g6';
 import {
-  ChromeFilled,
-  BranchesOutlined,
   ApartmentOutlined,
   AppstoreFilled,
+  BranchesOutlined,
+  ChromeFilled,
   CopyrightCircleFilled,
   ShareAltOutlined,
 } from '@ant-design/icons';
+import type { Graph, SingleLayoutOptions } from '@antv/g6';
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import { Graphin } from '../src';
+import { LayoutSelector } from '../src/components';
 
 const data = {
   nodes: [
@@ -90,9 +90,18 @@ const layouts = [
 
 const Demo: React.FC = () => {
   const [layout, setLayout] = useState<SingleLayoutOptions>(layouts[0]);
+  const [graph, setGraph] = useState<Graph | null>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('graph instance', graph);
+  }, [graph]);
 
   return (
     <Graphin
+      ref={(r) => {
+        setGraph(r);
+      }}
       id="graphin-demo"
       className="graphin-container"
       style={{ width: '100%', height: '100%' }}
@@ -104,7 +113,7 @@ const Demo: React.FC = () => {
       }}
     >
       <LayoutSelector
-        onChange={value => setLayout(layouts.find(layout => layout.type === value)!)}
+        onChange={(value) => setLayout(layouts.find((layout) => layout.type === value)!)}
         options={layouts}
         value={layout.type}
       />
