@@ -1,14 +1,15 @@
 {
   "name": "@antv/graphin",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A React toolkit for graph analysis based on g6",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/antvis/Graphin.git"
   },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "src",
     "es",
@@ -46,8 +47,7 @@
     "react-dom": "^18.0.0"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "license": "MIT"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
