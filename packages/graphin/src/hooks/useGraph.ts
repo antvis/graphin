@@ -33,8 +33,6 @@ export default function useGraph<P extends GraphinProps>(props: P) {
     };
   }, []);
 
-  
-
   useEffect(() => {
     const container = containerRef.current;
     const graph = graphRef.current;
