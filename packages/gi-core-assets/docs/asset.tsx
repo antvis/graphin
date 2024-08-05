@@ -1,33 +1,52 @@
 import { CanvasEvent, NodeEvent } from '@antv/g6';
+import { $i18n } from '@antv/gi-core-assets';
 import type { AssetPackage, ImplementWidget, ImplementWidgetProps } from '@antv/gi-sdk';
-import {
-  useEventPublish,
-  useEventSubscribe,
-  useGlobalModel,
-  useGraph,
-  useGraphOptions,
-  useWidgetProps,
-} from '@antv/gi-sdk';
-import { Button, Space } from 'antd';
+import { useGlobalModel, useGraph } from '@antv/gi-sdk';
 import React, { useEffect } from 'react';
+import strings from './i18n/strings';
 
 const fontStyle = {
   fontSize: 24,
   color: 'green',
 };
 
-const AppTitle: ImplementWidget<ImplementWidgetProps> = {
+const AppTitle: ImplementWidget<ImplementWidgetProps<'navbar'>> = {
   version: '0.1',
   metadata: {
     name: 'AppTitle',
-    displayName: '应用名',
-    description: '应用名',
+    displayName: $i18n.t('core-assets.widgets.app-title.component.metadata.displayName'),
+    description: $i18n.t('core-assets.widgets.app-title.component.metadata.description'),
+  },
+  component: (props) => {
+    const { slotElements } = props;
+    return (
+      <div className="app-title">
+        <div className="app-title-content">
+          {$i18n.t({ id: 'core-assets.widgets.app-title.component.app.title', defaultMessage: '测试应用' })}
+        </div>
+        <div className="app-title-navbar">{slotElements.navbar}</div>
+      </div>
+    );
+  },
+};
+
+const LanguageSwitcher: ImplementWidget = {
+  version: '0.1',
+  metadata: {
+    name: 'LanguageSwitcher',
+    displayName: $i18n.t('core-assets.widgets.language-switcher.metadata.displayName'),
+    description: $i18n.t('core-assets.widgets.language-switcher.metadata.description'),
   },
   component: () => {
+    const switchLanguage = () => {
+      $i18n.changeLanguage($i18n.language === 'en-US' ? 'zh-CN' : 'en-US');
+      window.location.reload();
+    };
+
     return (
-      <div style={{ height: 48, fontSize: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        测试用图应用
-      </div>
+      <a style={{ right: 0 }} onClick={switchLanguage}>
+        {$i18n.t('core-assets.widgets.language-switcher.component.language')}
+      </a>
     );
   },
 };
@@ -36,131 +55,25 @@ const Copyright: ImplementWidget = {
   version: '0.1',
   metadata: {
     name: 'Copyright',
-    displayName: 'Copyright',
-    description: '版权信息',
+    displayName: $i18n.t('core-assets.widgets.copyright.component.metadata.displayName'),
+    description: $i18n.t('core-assets.widgets.copyright.component.metadata.description'),
   },
   component: () => {
-    return (
-      <div
-        style={{
-          color: 'rgba(0, 0, 0, 0.65)',
-          fontSize: '10px',
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        2024 Your Company Name. All rights reserved.
-      </div>
-    );
+    return <div className="copyright">2024 Your Company Name. All rights reserved.</div>;
   },
 };
 
-const GraphOptionTester: ImplementWidget = {
+const ShowSelectedContent: ImplementWidget<ImplementWidgetProps & { count: number }> = {
   version: '0.1',
   metadata: {
-    name: 'GraphOptionTester',
-    displayName: '图表配置测试资产',
-    description: '测试图表配置的变化',
+    name: 'ShowSelectedContent',
+    displayName: '展示选中节点信息',
   },
   component: () => {
-    const [, updateOptions] = useGraphOptions();
-
-    const changeGraphLayout = () => {
-      updateOptions((options) => ({ ...options, layout: { type: 'dagre' } }));
-    };
-
-    return (
-      <Space direction="vertical" style={{ margin: '24px 0' }}>
-        <Button onClick={changeGraphLayout}>Update graph option [layout]</Button>
-      </Space>
-    );
-  },
-};
-
-const GlobalStateTester: ImplementWidget = {
-  version: '0.1',
-  metadata: {
-    name: 'GlobalStateTester',
-    displayName: '全局状态测试资产',
-    description: '测试全局状态的变化',
-  },
-  component: () => {
-    const [panel, setPanel] = useGlobalModel('panel');
-    const [, updatePanelProperties] = useWidgetProps('float-panel-content');
-
-    const openPanel = () => {
-      setPanel(true);
-    };
-
-    const changePanelCount = () => {
-      updatePanelProperties({ count: Math.floor(Math.random() * 1000) });
-    };
-
-    return (
-      <Space direction="vertical" style={{ margin: '24px 0' }}>
-        <Button onClick={openPanel}>修改全局状态来打开浮动面板</Button>
-        <p>
-          FloatPanel now is <b style={fontStyle}>{panel ? 'opened' : 'closed'}</b>
-        </p>
-
-        <Button onClick={changePanelCount}>Update panel props [Count]</Button>
-      </Space>
-    );
-  },
-};
-
-const EventBusTester: ImplementWidget = {
-  version: '0.1',
-  metadata: {
-    name: 'EventBusTester',
-    displayName: '事件总线测试资产',
-    description: '采用事件机制进行组件间通信',
-  },
-  component: () => {
-    const [a, setA] = useGlobalModel('a');
-    const emit = useEventPublish();
-
-    useEventSubscribe('custom-sidebar:change', () => {
-      setA(Math.floor(Math.random() * 1000));
-    });
-
-    const triggerChange = () => {
-      emit('custom-sidebar:change');
-    };
-
-    return (
-      <Space direction="vertical" style={{ margin: '24px 0' }}>
-        <Button onClick={triggerChange}>触发自定义事件来修改变量</Button>
-        <div>
-          Value of variable a is <b style={fontStyle}>{a}</b>
-        </div>
-      </Space>
-    );
-  },
-};
-
-const FloatPanelContent: ImplementWidget<ImplementWidgetProps & { count: number }> = {
-  version: '0.1',
-  metadata: {
-    name: 'FloatPanelContent',
-    displayName: '浮动面板内容',
-    description: '浮动面板内容',
-  },
-  component: (props) => {
-    const { count } = props;
-    const [{ currentNode, sider: isSiderOpen }] = useGlobalModel();
-
+    const [{ currentNode }] = useGlobalModel();
     return (
       <div>
-        <p>
-          Count: <b style={fontStyle}>{count}...</b>
-        </p>
-        <p>SidePanel now is {isSiderOpen ? <b style={fontStyle}>opened</b> : <b style={fontStyle}>closed</b>}</p>
-        <p>
-          Current node: <b style={fontStyle}>{currentNode?.id}</b>
-        </p>
+        Current node: <b style={fontStyle}>{currentNode?.id}</b>
       </div>
     );
   },
@@ -205,15 +118,15 @@ const ClickNodeWidget: ImplementWidget = {
   },
 };
 
+$i18n.loadResources(strings);
+
 export const myAssetPackage: AssetPackage = {
   version: '0.1',
   widgets: [
     AppTitle,
     Copyright,
     ClickNodeWidget,
-    FloatPanelContent,
-    EventBusTester,
-    GlobalStateTester,
-    GraphOptionTester,
+    ShowSelectedContent,
+    LanguageSwitcher,
   ] as ImplementWidget<ImplementWidgetProps>[],
 };

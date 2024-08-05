@@ -1,0 +1,5 @@
+{
+  "core-assets.services.fetch-data.metadata.description": "通过 fetch 获取数据。",
+  "core-assets.widgets.holy-grail-layout.metadata.displayName": "圣杯布局",
+  "core-assets.widgets.holy-grail-layout.metadata.description": "内置经典的布局方案，包含头部、右侧边栏、主体画布区域、左侧浮动面板和尾部五个区域。"
+}

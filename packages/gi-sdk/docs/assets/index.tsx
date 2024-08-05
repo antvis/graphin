@@ -117,10 +117,10 @@ const EventBusTester: ImplementWidget = {
   },
 };
 
-const FloatPanelContent: ImplementWidget<ImplementWidgetProps & { count: number }> = {
+const ShowSelectedContent: ImplementWidget<ImplementWidgetProps & { count: number }> = {
   version: '0.1',
   metadata: {
-    name: 'FloatPanelContent',
+    name: 'ShowSelectedContent',
     displayName: '浮动面板内容',
     description: '浮动面板内容',
   },
@@ -183,7 +183,7 @@ export const myAssetPackage: AssetPackage = {
   widgets: [
     AppTitle,
     ClickNodeWidget,
-    FloatPanelContent,
+    ShowSelectedContent,
     EventBusTester,
     GlobalStateTester,
     GraphOptionTester,

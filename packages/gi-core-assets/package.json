@@ -30,10 +30,13 @@
     "watch": "pnpm lib:es --w"
   },
   "dependencies": {
+    "@aligov/global-locale": "^1.0.5",
+    "@aligov/global-string-format": "^1.0.7",
     "@ant-design/icons": "^4.8.1",
     "@antv/g6": "^5.0.0",
     "@antv/gi-sdk": "workspace:*",
-    "ahooks": "^3.8.0"
+    "ahooks": "^3.8.0",
+    "antd": "^5.13.2"
   },
   "devDependencies": {
     "react": ">=16.9.0",

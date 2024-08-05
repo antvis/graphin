@@ -160,7 +160,7 @@ export const config: Application = {
       },
       {
         id: 'float-panel-content',
-        type: 'FloatPanelContent',
+        type: 'ShowSelectedContent',
         properties: {
           count: 100,
         },

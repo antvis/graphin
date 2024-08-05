@@ -1,0 +1,10 @@
+{
+  "core-assets.widgets.app-title.component.app.title": "测试应用",
+  "core-assets.widgets.app-title.metadata.description": "自定义描述应用头部内容",
+  "core-assets.widgets.app-title.metadata.displayName": "自定义头部内容",
+  "core-assets.widgets.copyright.metadata.description": "版权信息",
+  "core-assets.widgets.copyright.metadata.displayName": "Copyright",
+  "core-assets.widgets.language-switcher.component.language": "CN",
+  "core-assets.widgets.language-switcher.metadata.description": "切换应用的显示语言",
+  "core-assets.widgets.language-switcher.metadata.displayName": "语言切换器"
+}

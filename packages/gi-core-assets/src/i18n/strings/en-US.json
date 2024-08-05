@@ -1,0 +1,5 @@
+{
+  "core-assets.services.fetch-data.metadata.description": "Fetch data via fetch.",
+  "core-assets.widgets.holy-grail-layout.metadata.displayName": "Holy Grail Layout",
+  "core-assets.widgets.holy-grail-layout.metadata.description": "A classic layout that includes five areas: header, right sidebar, main canvas area, left floating panel, and footer."
+}

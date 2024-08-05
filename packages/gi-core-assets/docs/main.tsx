@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { myAssetPackage } from './asset';
 import { config } from './config';
+import './index.less';
 
 export const Demo: React.FC = () => {
   const assets = [GICoreAssets, myAssetPackage];

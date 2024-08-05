@@ -1,0 +1,10 @@
+{
+  "core-assets.widgets.app-title.component.app.title": "Graph Application",
+  "core-assets.widgets.app-title.metadata.description": "Custom header for the application.",
+  "core-assets.widgets.app-title.metadata.displayName": "Custom Header",
+  "core-assets.widgets.copyright.metadata.description": "Copyright",
+  "core-assets.widgets.copyright.metadata.displayName": "Copyright",
+  "core-assets.widgets.language-switcher.component.language": "EN",
+  "core-assets.widgets.language-switcher.metadata.description": "Switch the display language of the app",
+  "core-assets.widgets.language-switcher.metadata.displayName": "Language Switcher"
+}

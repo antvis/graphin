@@ -19,11 +19,15 @@ export const config: Application = {
   spec: {
     graph: {
       autoResize: true,
-      layout: { type: 'force' },
+      layout: { type: 'dagre' },
       behaviors: ['drag-canvas', 'zoom-canvas', 'drag-element', 'click-select', 'hover-activate'],
       animation: false,
       autoFit: 'view',
+      padding: 100,
       node: {
+        style: {
+          labelText: (d) => d.id,
+        },
         palette: {
           type: 'group',
           field: 'cluster',
@@ -38,43 +42,33 @@ export const config: Application = {
           showHeader: true,
           showFooter: true,
           showFloatPanel: true,
-          floatPanel: {
-            afterOpenChange: (open) => {
-              alert('afterOpenChange');
-            },
-          },
         },
         slots: {
           header: ['title'],
-          sidePanel: ['global-state-tester', 'event-bus-tester', 'graph-option-tester'],
-          floatPanel: ['float-panel-content'],
+          sidePanel: ['show-selected-content'],
+          floatPanel: ['show-selected-content'],
           canvas: ['bind-click-node'],
           footer: ['copyright'],
         },
       },
       {
+        id: 'language-switcher',
+        type: 'LanguageSwitcher',
+      },
+      {
         id: 'title',
         type: 'AppTitle',
+        slots: {
+          navbar: ['language-switcher'],
+        },
       },
       {
         id: 'copyright',
         type: 'Copyright',
       },
       {
-        id: 'event-bus-tester',
-        type: 'EventBusTester',
-      },
-      {
-        id: 'global-state-tester',
-        type: 'GlobalStateTester',
-      },
-      {
-        id: 'graph-option-tester',
-        type: 'GraphOptionTester',
-      },
-      {
-        id: 'float-panel-content',
-        type: 'FloatPanelContent',
+        id: 'show-selected-content',
+        type: 'ShowSelectedContent',
         properties: {
           count: 100,
         },
