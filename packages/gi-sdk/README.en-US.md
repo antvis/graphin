@@ -8,7 +8,9 @@
 
 <h1 align="center">GISDK</h1>
 
-<div align="center">SDK for Graph Insight Application
+<div align="center">
+
+SDK for Graph Insight Application based on [G6](https://github.com/antvis/G6).
 
 [![Version](https://img.shields.io/npm/v/@antv/gi-sdk)](https://www.npmjs.com/@antv/gi-sdk)
 [![NPM downloads](http://img.shields.io/npm/dm/@antv/gi-sdk.svg)](http://npmjs.com/@antv/gi-sdk)
