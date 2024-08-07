@@ -10,7 +10,6 @@ export {
   useGraph,
   useGraphOptions,
   useRegistryManager,
-  useStateManager,
   useWidgetProps,
 } from './hooks';
 
