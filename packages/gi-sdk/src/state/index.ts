@@ -1,5 +1,6 @@
 import type { GlobalModel } from '../context/types';
 import type { Application } from '../spec';
+import type { Dataset } from '../types';
 import { DatasetStore } from './dataset';
 import { GlobalStore } from './global';
 import { GraphStore } from './graph';
@@ -25,7 +26,7 @@ class StateManager {
   public initState(config: Application) {
     this.widgetStore.setWidgets(config.spec.widgets);
     this.graphStore.setGraphOptions(config.spec.graph);
-    this.datasetStore.setDataset(config.dataset);
+    this.datasetStore.setDataset(config.dataset as Dataset);
   }
 }
 
