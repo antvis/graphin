@@ -2,6 +2,7 @@ import { useGraphin } from '../../context';
 import React, { CSSProperties, useEffect } from 'react';
 
 import { Graph } from '@antv/g6';
+import { Menu } from 'antd';
 
 
 
@@ -122,7 +123,9 @@ const getContextMenuPositionStyle = (graph: Graph, pointPosition: [number, numbe
   return positionStyle
 }
 
-export const ContextMenu: React.FunctionComponent<ContextMenuProps> = (props) => {
+export const ContextMenu: React.FunctionComponent<ContextMenuProps> & {
+  Menu: typeof Menu;
+} = (props) => {
   const { children, bindType = 'node', style = {} } = props;
   const graphin = useGraphin();
   const { graph } = graphin
@@ -222,4 +225,5 @@ export const ContextMenu: React.FunctionComponent<ContextMenuProps> = (props) =>
     </div>
   );
 };
+ContextMenu.Menu = Menu;
 
