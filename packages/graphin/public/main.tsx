@@ -7,10 +7,11 @@ import {
   ShareAltOutlined,
 } from '@ant-design/icons';
 import type { Graph, SingleLayoutOptions } from '@antv/g6';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Graphin } from '../src';
-import { LayoutSelector } from '../src/components';
+import { Graphin, GraphinContext } from '../src';
+import { ContextMenu, LayoutSelector } from '../src/components';
+import { Menu } from 'antd';
 
 const data = {
   nodes: [
@@ -52,6 +53,22 @@ const data = {
   ],
 };
 
+const NodeContextMenu = () => {
+  const graphin = useContext(GraphinContext);
+
+  const handleClick = () => {
+    const {node: {handleClose, item}} = graphin.contextmenu;
+    console.log({item})
+    handleClose();
+  };
+  return <Menu selectedKeys={[]} onClick={handleClick} mode="vertical">
+  <Menu.Item key="10">
+    展开10个关联节点
+  </Menu.Item>
+  <Menu.Item key="20">展开20个关联节点</Menu.Item>
+  <Menu.Item key={'all'}>展开全部关联节点</Menu.Item>
+</Menu>
+}
 const layouts = [
   {
     type: 'force',
@@ -117,6 +134,21 @@ const Demo: React.FC = () => {
         options={layouts}
         value={layout.type}
       />
+      <ContextMenu >
+          <NodeContextMenu />
+      </ContextMenu>
+      <ContextMenu bindType='edge'>
+          <ContextMenu.Menu>
+            <ContextMenu.Menu.Item>边菜单1</ContextMenu.Menu.Item>
+            <ContextMenu.Menu.Item>边菜单2</ContextMenu.Menu.Item>
+          </ContextMenu.Menu>
+      </ContextMenu>
+      <ContextMenu bindType='canvas' >
+          <ContextMenu.Menu>
+            <ContextMenu.Menu.Item>画布菜单1</ContextMenu.Menu.Item>
+            <ContextMenu.Menu.Item>画布菜单2</ContextMenu.Menu.Item>
+          </ContextMenu.Menu>
+      </ContextMenu>
     </Graphin>
   );
 };
