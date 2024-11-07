@@ -17,6 +17,7 @@ const Graph = forwardRef<GraphRef, PropsWithChildren<GraphinProps>>((props, ref)
   useImperativeHandle(ref, () => graph!, [graph]);
 
   const containerStyle: CSSProperties = {
+    height: 'inherit',
     position: 'relative',
     ...style,
   };
