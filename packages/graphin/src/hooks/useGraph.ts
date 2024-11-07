@@ -1,5 +1,5 @@
 import { Graph } from '@antv/g6';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { GraphinProps } from '../types';
 
 /**
@@ -12,7 +12,7 @@ export default function useGraph<P extends GraphinProps>(props: P) {
   const [isReady, setIsReady] = useState(false);
   const graphRef: React.MutableRefObject<Graph | null> = useRef(null);
   const containerRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
-  const [containerHeight, setContainerHeight] = useState<CSSProperties['height']>('inherit');
+  const [containerHeight, setContainerHeight] = useState<number | string | undefined>('inherit');
 
   useEffect(() => {
     if (graphRef.current || !containerRef.current) return;
