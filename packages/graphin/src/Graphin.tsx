@@ -12,12 +12,11 @@ type GraphRef = G6Graph | null;
  */
 const Graph = forwardRef<GraphRef, PropsWithChildren<GraphinProps>>((props, ref) => {
   const { style, children, ...restProps } = props;
-  const { graph, containerRef, containerHeight, isReady } = useGraph<GraphinProps>(restProps);
+  const { graph, containerRef, isReady } = useGraph<GraphinProps>(restProps);
 
   useImperativeHandle(ref, () => graph!, [graph]);
 
   const containerStyle: CSSProperties = {
-    height: containerHeight,
     position: 'relative',
     ...style,
   };

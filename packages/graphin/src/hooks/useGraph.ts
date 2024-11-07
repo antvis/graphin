@@ -12,7 +12,6 @@ export default function useGraph<P extends GraphinProps>(props: P) {
   const [isReady, setIsReady] = useState(false);
   const graphRef: React.MutableRefObject<Graph | null> = useRef(null);
   const containerRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
-  const [containerHeight, setContainerHeight] = useState<number | string | undefined>('inherit');
 
   useEffect(() => {
     if (graphRef.current || !containerRef.current) return;
@@ -41,21 +40,12 @@ export default function useGraph<P extends GraphinProps>(props: P) {
     if (!options || !container || !graph || graph.destroyed) return;
 
     graph.setOptions(options);
-    graph
-      .render()
-      .then(() => onReady?.(graph))
-      .then(() => {
-        // 优先使用父容器高度，否则使用画布高度
-        // Use the parent container height by default, otherwise use the canvas height
-        const parentHeight = container.parentElement?.clientHeight;
-        setContainerHeight(parentHeight ? 'inherit' : graph.getCanvas().getConfig().height);
-      });
+    graph.render().then(() => onReady?.(graph));
   }, [options]);
 
   return {
     graph: graphRef.current,
     containerRef,
-    containerHeight,
     isReady,
   };
 }
