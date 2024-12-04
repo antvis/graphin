@@ -1,6 +1,6 @@
 {
   "name": "@antv/gi-core-assets",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "Core assets for @antv/gi-sdk",
   "repository": {
     "type": "git",
@@ -48,7 +48,6 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "tag": "alpha"
+    "registry": "https://registry.npmjs.org/"
   }
 }
