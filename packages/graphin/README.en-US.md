@@ -216,7 +216,7 @@ Using `useGraphin()` to access the graph instance and its state for more conveni
 
 ```jsx
 import React from 'react';
-import { Graphin, useGraphin } from '@antv/graphin'';
+import { Graphin, useGraphin } from '@antv/graphin';
 
 const CustomComponent = () => {
   const { graph, isReady } = useGraphin();
