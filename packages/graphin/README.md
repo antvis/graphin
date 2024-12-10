@@ -216,7 +216,7 @@ export function Demo() {
 
 ```jsx
 import React from 'react';
-import { Graphin, useGraphin } from '@antv/g6'';
+import { Graphin, useGraphin } from '@antv/graphin';
 
 const CustomComponent = () => {
   const { graph, isReady } = useGraphin();
